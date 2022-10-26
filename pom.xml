@@ -12,6 +12,7 @@
         <module>jdk-proxy</module>
         <module>cglib-proxy</module>
         <module>strategy</module>
+        <module>singleton</module>
     </modules>
 
     <properties>
