@@ -11,6 +11,7 @@
     <modules>
         <module>jdk-proxy</module>
         <module>cglib-proxy</module>
+        <module>strategy</module>
     </modules>
 
     <properties>
