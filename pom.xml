@@ -13,6 +13,7 @@
         <module>cglib-proxy</module>
         <module>strategy</module>
         <module>singleton</module>
+        <module>factory</module>
     </modules>
 
     <properties>
