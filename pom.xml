@@ -17,6 +17,7 @@
         <module>abstract-factory</module>
         <module>prototype</module>
         <module>decorator</module>
+        <module>template</module>
     </modules>
 
     <properties>
