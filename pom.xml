@@ -18,6 +18,7 @@
         <module>prototype</module>
         <module>decorator</module>
         <module>template</module>
+        <module>builder</module>
     </modules>
 
     <properties>
