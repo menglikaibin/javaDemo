@@ -19,6 +19,7 @@
         <module>decorator</module>
         <module>template</module>
         <module>builder</module>
+        <module>classloader</module>
     </modules>
 
     <properties>
