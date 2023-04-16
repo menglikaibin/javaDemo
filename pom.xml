@@ -20,6 +20,7 @@
         <module>template</module>
         <module>builder</module>
         <module>classloader</module>
+        <module>adapter</module>
     </modules>
 
     <properties>
