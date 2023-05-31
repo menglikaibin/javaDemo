@@ -23,6 +23,7 @@
         <module>adapter</module>
         <module>bridge</module>
         <module>composite</module>
+        <module>observer</module>
     </modules>
 
     <properties>
