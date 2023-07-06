@@ -26,6 +26,7 @@
         <module>observer</module>
         <module>proxy</module>
         <module>facade</module>
+        <module>easyexcel</module>
     </modules>
 
     <properties>
