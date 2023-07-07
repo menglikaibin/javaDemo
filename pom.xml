@@ -27,6 +27,7 @@
         <module>proxy</module>
         <module>facade</module>
         <module>easyexcel</module>
+        <module>chain</module>
     </modules>
 
     <properties>
