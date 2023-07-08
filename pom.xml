@@ -28,6 +28,7 @@
         <module>facade</module>
         <module>easyexcel</module>
         <module>chain</module>
+        <module>command</module>
     </modules>
 
     <properties>
