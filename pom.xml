@@ -29,6 +29,7 @@
         <module>easyexcel</module>
         <module>chain</module>
         <module>command</module>
+        <module>mediator</module>
     </modules>
 
     <properties>
