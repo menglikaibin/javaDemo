@@ -31,6 +31,7 @@
         <module>command</module>
         <module>mediator</module>
         <module>visit</module>
+        <module>fanxing</module>
     </modules>
 
     <properties>
