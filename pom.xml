@@ -33,6 +33,7 @@
         <module>visit</module>
         <module>fanxing</module>
         <module>javaCV</module>
+        <module>dataStructure</module>
     </modules>
 
     <properties>
