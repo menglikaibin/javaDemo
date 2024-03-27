@@ -1,6 +1,4 @@
-package com.demo;
-
-import netscape.javascript.JSObject;
+package com.demo.linkList;
 
 /**
  * @author 吴凯斌
