@@ -52,7 +52,25 @@ public class MaxSubArray {
         return Collections.max(list);
     }
 
+    public static int maxSubArray2(int[] nums) {
+        int length = nums.length;
+
+        if (length == 1) {
+            return nums[0];
+        }
+
+        int maxValue = nums[0];
+        int newMaxValue = nums[0];
+
+        for (int i = 1; i < length; i++) {
+            maxValue = Math.max(nums[i], maxValue + nums[i]);
+            newMaxValue = Math.max(maxValue, newMaxValue);
+        }
+
+        return newMaxValue;
+    }
+
     public static void main(String[] args) {
-        System.out.println((maxSubArray(new int[]{-2, 1})));
+        System.out.println((maxSubArray2(new int[]{5, 4, -1, 7, 8})));
     }
 }
