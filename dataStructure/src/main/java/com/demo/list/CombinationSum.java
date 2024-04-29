@@ -1,6 +1,7 @@
 package com.demo.list;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 给你一个 无重复元素 的整数数组 candidates 和一个目标整数 target ，找出 candidates 中可以使数字和为目标数 target 的 所有 不同组合 ，并以列表形式返回。你可以按 任意顺序 返回这些组合。
@@ -56,7 +57,8 @@ public class CombinationSum {
         if (remain < 0) {
             return;
         } else if (remain == 0) {
-            result.add(new ArrayList<>(tempList));
+            List<Integer> collect = tempList.stream().sorted().collect(Collectors.toList());
+            result.add(collect);
         } else {
             for (int i = start; i < candidates.length; i++) {
                 // 由于允许重复使用元素，无需跳过重复元素
@@ -72,6 +74,6 @@ public class CombinationSum {
     }
 
     public static void main(String[] args) {
-        System.out.println(combinationSum(new int[]{1, 2, 3, 4, 5}, 4));
+        System.out.println(combinationSum(new int[]{2,3,5}, 8));
     }
 }
