@@ -31,6 +31,8 @@ public class MergeRange {
     public int[][] merge(int[][] intervals) {
         int length = intervals.length;
 
+        Arrays.sort(intervals, (interval1, interval2) -> interval1[0] - interval2[0]);
+
         List<int[]> result = new ArrayList<>();
         int[] first = intervals[0];
 
