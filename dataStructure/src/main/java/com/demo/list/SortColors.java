@@ -52,29 +52,31 @@ public class SortColors {
         return nums;
     }
 
-    private void quickSort(int[] nums, int left, int right) {
+    public void quickSort(int[] nums, int left, int right) {
         if (left >= right) {
             return;
         }
+
+        // 获取基准元素的下标
         int pivot = partition(nums, left, right);
         quickSort(nums, left, pivot - 1);
         quickSort(nums, pivot + 1, right);
     }
 
     private int partition(int[] nums, int left, int right) {
-        int i = left, j = right;
+        int pivot = nums[right];
 
-        while (i < j) {
-            while (i < j && nums[j] >= nums[left]) {
-                j --;
+        int i = left - 1;
+
+        for (int j = left; j < right; j++) {
+            if (nums[j] <= pivot) {
+                i++;
+                swap(nums, i, j);
             }
-            while (i < j && nums[i] <= nums[right]) {
-                i ++;
-            }
-            swap(nums, i, j);
         }
-        swap(nums, i, left);
-        return i;
+
+        swap(nums, i + 1, right);
+        return i+1;
     }
 
 
@@ -85,7 +87,11 @@ public class SortColors {
     }
 
     public static void main(String[] args) {
+        int[] nums = new int[]{0, 1, 0, 1, 0, 1, 2, 2, 1};
         SortColors sortColors = new SortColors();
-        System.out.println(Arrays.toString(sortColors.sortColors(new int[]{0, 1, 0, 1, 0, 1, 2, 2, 1})));
+//        System.out.println(Arrays.toString(sortColors.sortColors(new int[]{0, 1, 0, 1, 0, 1, 2, 2, 1})));
+
+        sortColors.quickSort(nums, 0, nums.length - 1);
+        System.out.println(Arrays.toString(nums));
     }
 }
