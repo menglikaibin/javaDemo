@@ -43,31 +43,42 @@ public class MergeSortList {
 
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         if (m == 0) {
-            nums1 = nums2;
+            for (int i = 0; i < n; i++) {
+                nums1[i] = nums2[i];
+            }
+            return;
         }
         if (n == 0) {
             return;
         }
 
+        int[] result = new int[m + n];
+
         int j = 0, k = 0;
         int temp1 = nums1[0];
         int temp2 = nums2[0];
-        for (int i = 0; i < m + n - 1; i++) {
+        for (int i = 0; i < m + n; i++) {
             if (temp1 < temp2) {
-                nums1[i] = temp1;
-                j ++;
-                temp1 = nums1[j];
-            } else if (temp1 == temp2) {
-                j ++;
-                temp1 = nums1[j];
-                nums1[i] = temp2;
+                result[i] = temp1;
+                if (j < m - 1) {
+                    j+=1;
+                    temp1 = nums1[j];
+                } else {
+                    temp1 = nums2[n-1];
+                }
             } else {
-                nums1[i] = temp2;
+                result[i] = temp2;
                 if (k < n - 1) {
-                    k++;
+                    k+=1;
                     temp2 = nums2[k];
+                } else {
+                    temp2 = nums1[m-1];
                 }
             }
+        }
+
+        for (int i = 0; i < m + n; i++) {
+            nums1[i] = result[i];
         }
     }
 
@@ -80,8 +91,8 @@ public class MergeSortList {
 
     public static void main(String[] args) {
         MergeSortList mergeSortList = new MergeSortList();
-        int[] nums1 = {1, 3, 5, 6, 0, 0, 0, 0};
-        mergeSortList.merge(nums1, 4, new int[]{2, 7, 8, 9}, 4);
+        int[] nums1 = {2, 0};
+        mergeSortList.merge(nums1, 1, new int[]{1}, 1);
 
         System.out.println(Arrays.toString(nums1));
     }
