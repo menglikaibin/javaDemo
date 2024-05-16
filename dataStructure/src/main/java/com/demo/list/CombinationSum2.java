@@ -35,7 +35,7 @@ public class CombinationSum2 {
         Set<List<Integer>> result = new HashSet<>();
 
         Arrays.sort(candidates);
-        backtracking(result, new ArrayList<>(), candidates, target, 0);
+        backtracking2(result, new ArrayList<>(), candidates, target, 0);
 
         return new ArrayList<>(result);
     }
@@ -55,6 +55,25 @@ public class CombinationSum2 {
             backtracking(result, data, candidates, remain - candidates[i], i + 1);
             data.remove(data.size() - 1);
         }
+    }
+
+    private static void backtracking2(Set<List<Integer>> result, List<Integer> data, int[] candidates, int remain, int current) {
+        if (remain == 0) {
+            result.add(new ArrayList<>(data)); // 添加一个新组合
+            return;
+        }
+        if (remain < 0 || current >= candidates.length) {
+            return; // 剪枝：剩余值小于0或已遍历完所有候选数
+        }
+
+        // 不选择当前位置的数，直接进入下一个位置
+        backtracking2(result, data, candidates, remain, current + 1);
+
+        // 选择当前位置的数
+        data.add(candidates[current]);
+        backtracking2(result, data, candidates, remain - candidates[current], current + 1);
+        // 回溯：撤销选择
+        data.remove(data.size() - 1);
     }
 
     public static void main(String[] args) {
