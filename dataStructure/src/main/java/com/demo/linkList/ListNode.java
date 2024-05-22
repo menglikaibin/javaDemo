@@ -5,8 +5,8 @@ package com.demo.linkList;
  * 创建时间 2024/3/26 11:07
  */
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
     ListNode() {
     }
