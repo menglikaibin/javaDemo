@@ -48,6 +48,31 @@ public class YHTriangle {
         return result;
     }
 
+    public List<Integer> getRow(int rowIndex) {
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < rowIndex + 1; i++) {
+            if (i == 0) {
+                result.add(new ArrayList<>(List.of(1)));
+            } else {
+                List<Integer> lastRow = result.get(i - 1);
+                List<Integer> newRow = new ArrayList<>();
+                for (int j = 0; j < lastRow.size() + 1; j++) {
+                    if (j == 0) {
+                        newRow.add(1);
+                    } else if (j == lastRow.size()) {
+                        newRow.add(1);
+                    } else {
+                        newRow.add(lastRow.get(j) + lastRow.get(j-1));
+                    }
+                }
+                result.add(newRow);
+            }
+
+        }
+
+        return result.get(rowIndex);
+    }
+
     public static void main(String[] args) {
         YHTriangle yhTriangle = new YHTriangle();
 
