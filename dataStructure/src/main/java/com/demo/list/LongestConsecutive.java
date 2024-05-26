@@ -1,8 +1,6 @@
 package com.demo.list;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
@@ -42,6 +40,30 @@ public class LongestConsecutive {
                 if (max == 0) {
                     max = 1;
                 }
+            }
+        }
+
+        return max;
+    }
+
+    public int longestConsecutive2(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            set.add(num);
+        }
+
+        int max = 0;
+        for (Integer num : set) {
+            if (!set.contains(num - 1)) {
+                int currentNum = num;
+                int currentStreak = 1;
+
+                while (set.contains(currentNum + 1)) {
+                    currentNum += 1;
+                    currentStreak += 1;
+                }
+
+                max = Math.max(max, currentStreak);
             }
         }
 
