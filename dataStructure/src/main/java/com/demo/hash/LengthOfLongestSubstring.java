@@ -1,7 +1,7 @@
 package com.demo.hash;
 
-import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串的长度。
@@ -26,28 +26,33 @@ public class LengthOfLongestSubstring {
 
 
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.length() == 0) {
-            return 0;
+        int length = s.length();
+        if (length <= 1) {
+            return length;
         }
 
-        int n = s.length();
-        HashSet<Character> set = new HashSet<>();
-        int maxLen = 0, start = 0;
+        int max = 0;
+        for (int i = 0; i < length; i++) {
 
-        for (int i = 0; i < n; i++) {
-            if (set.contains(s.charAt(i))) {
-                ArrayList<Character> list = new ArrayList<>(set);
-                start = Math.max(start, set.size() + list.indexOf(s.charAt(i)) + 1);
-            }
+            Set<Character> set = new HashSet<>();
             set.add(s.charAt(i));
-            maxLen = Math.max(maxLen, set.size());
+            for (int j = i + 1; j < length; j++) {
+                int size = set.size();
+                set.add(s.charAt(j));
+                if (set.size() == size) {
+                    max = Math.max(max, set.size());
+                    break;
+                } else {
+                    max = Math.max(max, set.size());
+                }
+            }
         }
 
-        return maxLen;
+        return max;
     }
 
     public static void main(String[] args) {
         LengthOfLongestSubstring lengthOfLongestSubstring = new LengthOfLongestSubstring();
-        System.out.println(lengthOfLongestSubstring.lengthOfLongestSubstring("dvardf"));
+        System.out.println(lengthOfLongestSubstring.lengthOfLongestSubstring("au"));
     }
 }
