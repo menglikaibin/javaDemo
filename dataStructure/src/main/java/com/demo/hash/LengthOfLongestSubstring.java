@@ -1,6 +1,8 @@
 package com.demo.hash;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -51,8 +53,29 @@ public class LengthOfLongestSubstring {
         return max;
     }
 
+    public int lengthOfLongestSubstring2(String s) {
+        if (s.length() <= 1) {
+            return s.length();
+        }
+
+        int max = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        int left = 0;
+
+        for (int right = 0; right < s.length(); right++) {
+            char currentChar = s.charAt(right);
+            if (map.containsKey(currentChar) && map.get(currentChar) >= left) {
+                left = map.get(currentChar) + 1;
+            }
+            map.put(currentChar, right);
+            max = Math.max(max, right - left + 1);
+        }
+
+        return max;
+    }
+
     public static void main(String[] args) {
         LengthOfLongestSubstring lengthOfLongestSubstring = new LengthOfLongestSubstring();
-        System.out.println(lengthOfLongestSubstring.lengthOfLongestSubstring("au"));
+        System.out.println(lengthOfLongestSubstring.lengthOfLongestSubstring2("auaxdtsza"));
     }
 }
