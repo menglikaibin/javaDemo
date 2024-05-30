@@ -3,8 +3,8 @@ package com.demo.treenode;
 
 public class TreeNode {
     int val;
-    public TreeNode left;
-    public TreeNode right;
+    TreeNode left;
+    TreeNode right;
     TreeNode() {}
     TreeNode(int val) { this.val = val; }
     TreeNode(int val, TreeNode left, TreeNode right) {
