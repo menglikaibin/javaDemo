@@ -18,10 +18,28 @@ public class KthSmallest {
 
     private List<Integer> list = new ArrayList<>();
 
-    public int kthSmallest(TreeNode root, int k) {
-        add(root);
+    private int n = 0;
 
-        return list.get(k-1);
+    private int value = -1;
+
+    public int kthSmallest(TreeNode root, int k) {
+        getKthNum(root, k);
+
+        return value;
+    }
+
+    private void getKthNum(TreeNode node, int k) {
+        if (node == null) {
+            return;
+        }
+
+        getKthNum(node.left, k);
+        n++;
+        if (n == k) {
+            value = node.val;
+            return;
+        }
+        getKthNum(node.right, k);
     }
 
     private void add(TreeNode node) {
