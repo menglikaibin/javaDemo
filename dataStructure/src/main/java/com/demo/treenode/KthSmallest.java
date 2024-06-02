@@ -1,7 +1,6 @@
 package com.demo.treenode;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -19,10 +18,8 @@ public class KthSmallest {
 
     private List<Integer> list = new ArrayList<>();
 
-
     public int kthSmallest(TreeNode root, int k) {
         add(root);
-        list.sort(Comparator.comparing(item -> item));
 
         return list.get(k-1);
     }
@@ -35,5 +32,17 @@ public class KthSmallest {
         add(node.left);
         list.add(node.val);
         add(node.right);
+    }
+
+    public static void main(String[] args) {
+        TreeNode treeNode = new TreeNode(5,
+                new TreeNode(3,
+                        new TreeNode(2, null, null),
+                        new TreeNode(4, null, null)
+                ),
+                new TreeNode(6, null, null));
+
+        KthSmallest kthSmallest = new KthSmallest();
+        System.out.println(kthSmallest.kthSmallest(treeNode, 3));
     }
 }
