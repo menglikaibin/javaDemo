@@ -47,10 +47,13 @@ public class LowestCommonAncestor {
 
         TreeNode left = ans(node.left, p, q);
         TreeNode right = ans(node.right, p, q);
+
+        //如果 left 和 right 都不为 null，说明 p 和 q 分别位于当前节点的左右子树中，那么当前节点 node 就是它们的最近公共祖先。
         if (left != null && right != null) {
             return node;
         }
 
+        // 如果只有 left（或 right）不为 null，说明 p 和 q 之一位于当前节点的左（或右）子树中，那么 left（或 right）就是继续向上找寻的路径上的节点，也就是当前能找到的最近公共祖先。
         if (left == null && right != null) {
             return right;
         }
