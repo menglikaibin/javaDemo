@@ -36,13 +36,7 @@ public class PartitionLabels {
         }
 
         for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            int index = i;
-            for (int j = i + 1; j < s.length(); j++) {
-                if (s.charAt(j) == c) {
-                    index = j;
-                }
-            }
+            int index = data.lastIndexOf(s.charAt(i));
             if (index != i) {
                 for (int j = i; j < index; j++) {
                     index = Math.max(index, data.lastIndexOf(s.charAt(j)));
