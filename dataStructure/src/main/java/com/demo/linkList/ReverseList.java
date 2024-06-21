@@ -42,4 +42,10 @@ public class ReverseList {
         return pre;
     }
 
+    public static void main(String[] args) {
+        ReverseList reverseList = new ReverseList();
+
+        reverseList.reverseList(new ListNode(1, new ListNode(2, new ListNode(3))));
+    }
+
 }
