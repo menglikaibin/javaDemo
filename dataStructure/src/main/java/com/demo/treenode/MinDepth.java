@@ -48,4 +48,16 @@ public class MinDepth {
 
         return 1 + Math.min(leftHeight, rightHeight);
     }
+
+    public static void main(String[] args) {
+        TreeNode treeNode = new TreeNode(5,
+                new TreeNode(3,
+                        new TreeNode(2, null, null),
+                        new TreeNode(4, null, null)
+                ),
+                new TreeNode(6, null, null));
+
+        MinDepth minDepth = new MinDepth();
+        System.out.println(minDepth.minDepth(treeNode));
+    }
 }
