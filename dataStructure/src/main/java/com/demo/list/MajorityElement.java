@@ -18,8 +18,11 @@ public class MajorityElement {
             if (map.get(num) != null) {
                 map.put(num, map.get(num) + 1);
                 if (map.get(num) + 1 >= max) {
-                    max = map.get(num) + 1;
+                    max = map.get(num);
                     val = num;
+                    if (max > nums.length / 2) {
+                        return num;
+                    }
                 }
             } else {
                 map.put(num, 1);
@@ -29,4 +32,8 @@ public class MajorityElement {
         return val;
     }
 
+    public static void main(String[] args) {
+        MajorityElement majorityElement = new MajorityElement();
+        System.out.println(majorityElement.majorityElement(new int[]{2, 2, 1, 1, 1, 2, 2}));
+    }
 }
