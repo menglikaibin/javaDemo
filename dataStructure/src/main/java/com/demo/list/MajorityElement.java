@@ -1,7 +1,9 @@
 package com.demo.list;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class MajorityElement {
 
@@ -30,6 +32,43 @@ public class MajorityElement {
         }
 
         return val;
+    }
+
+    public int majorityElement2(int[] nums) {
+        Arrays.sort(nums);
+
+        return nums[nums.length / 2];
+    }
+
+    public int majorityElement3(int[] nums) {
+        Random random = new Random();
+
+        int majorityCount = nums.length / 2;
+
+        while (true) {
+            // 随机选择一个下标作为候选
+            int candidate = nums[randRange(random, 0, nums.length)];
+            // 计算是否大于1/2
+            if (countOccurences(nums, candidate) > majorityCount) {
+                return candidate;
+            }
+        }
+    }
+
+    private int randRange(Random random, int min, int max) {
+        return random.nextInt(max - min) + min;
+    }
+
+    private int countOccurences(int[] nums, int num) {
+        int count = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == num) {
+                count ++;
+            }
+        }
+
+        return count;
     }
 
     public static void main(String[] args) {
