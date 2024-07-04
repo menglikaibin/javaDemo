@@ -40,23 +40,37 @@ public class PartitionList {
         while (head != null) {
             if (head.val < x) {
                 newHead1.next = new ListNode(head.val);
+                newHead1 = newHead1.next;
                 head = head.next;
             } else {
                 newHead2.next = new ListNode(head.val);
+                newHead2 = newHead2.next;
                 head = head.next;
             }
         }
 
         ListNode lastHead = result;
-        while (lastHead != null) {
+        while (true) {
             if (lastHead.next == null) {
                 lastHead.next = result2.next;
+                return result.next;
             } else {
                 lastHead = lastHead.next;
             }
         }
 
-        return result.next;
     }
 
+    public static void main(String[] args) {
+        ListNode listNode = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(2, new ListNode(2, new ListNode(1))))));
+
+
+        PartitionList partitionList = new PartitionList();
+        ListNode partition = partitionList.partition(listNode, 2);
+
+        while (partition != null) {
+            System.out.println(partition.val);
+            partition = partition.next;
+        }
+    }
 }
