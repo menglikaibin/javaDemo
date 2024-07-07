@@ -1,6 +1,5 @@
 package com.demo.stack;
 
-import java.util.Comparator;
 import java.util.Stack;
 
 /**
@@ -50,17 +49,20 @@ import java.util.Stack;
 public class MinStack {
 
     private Stack<Integer> stack = new Stack<>();
+    private Stack<Integer> minStack = new Stack<>();
 
     public MinStack() {
-
+        minStack.push(Integer.MAX_VALUE);
     }
 
     public void push(int val) {
-        stack.add(val);
+        stack.push(val);
+        minStack.push(Math.min(val, minStack.peek()));
     }
 
     public void pop() {
         stack.pop();
+        minStack.pop();
     }
 
     public int top() {
@@ -72,7 +74,7 @@ public class MinStack {
     }
 
     public int getMin() {
-        return stack.stream().min(Comparator.comparingInt(o -> o)).get();
+        return minStack.peek();
     }
 
     public static void main(String[] args) {
