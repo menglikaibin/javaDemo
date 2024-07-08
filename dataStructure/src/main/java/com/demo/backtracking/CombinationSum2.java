@@ -65,6 +65,9 @@ public class CombinationSum2 {
             if (used[i]) {
                 continue;
             }
+            if (i > index && candidates[i] == candidates[i - 1] && !used[i - 1]) {
+                continue;
+            }
             data.add(candidates[i]);
             used[i] = true;
             backtracking(result, data, candidates, target, used, i + 1);
