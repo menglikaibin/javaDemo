@@ -56,11 +56,11 @@ public class Connect {
             while (size > 0) {
                 size --;
 
-                Node node = list.poll();
-                if (list.isEmpty()) {
+                Node node = list.pollLast();
+                if (size == 0) {
                     node.next = null;
                 } else {
-                    node.next = list.peek();
+                    node.next = list.peekLast();
                 }
 
                 if (node.left != null) {
@@ -73,6 +73,29 @@ public class Connect {
         }
 
         return root;
+    }
+
+    public static void main(String[] args) {
+        Node node = new Node(1,
+                new Node(2,
+                        new Node(3,
+                                new Node(5),
+                                new Node(6)),
+                        new Node(4,
+                                new Node(7),
+                                new Node(8))
+                ),
+                new Node(12,
+                        new Node(13,
+                                new Node(15),
+                                new Node(16)),
+                        new Node(14,
+                                new Node(17),
+                                new Node(18))
+                ));
+
+        Connect connect = new Connect();
+        connect.connect(node);
     }
 
 }
