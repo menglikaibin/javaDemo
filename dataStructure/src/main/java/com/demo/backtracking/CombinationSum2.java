@@ -52,12 +52,10 @@ public class CombinationSum2 {
 
     public void backtracking(Set<List<Integer>> result, List<Integer> data, int[] candidates, int target, boolean[] used, int index) {
         if (data.stream().mapToInt(Integer::intValue).sum() > target) {
-            data = new ArrayList<>();
             return;
         }
         if (data.stream().mapToInt(Integer::intValue).sum() == target) {
             result.add(new ArrayList<>(data));
-            data = new ArrayList<>();
             return;
         }
 

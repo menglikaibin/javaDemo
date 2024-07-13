@@ -49,7 +49,6 @@ public class Combine {
 
     public void backtracking(Set<List<Integer>> result, List<Integer> data, int[] nums, int k, int start, boolean[] booleans) {
         if (data.size() == k) {
-            data.sort(Comparator.comparingInt(o -> o));
             result.add(new ArrayList<>(data));
             return;
         }
