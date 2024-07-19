@@ -34,6 +34,7 @@
         <module>fanxing</module>
         <module>javaCV</module>
         <module>dataStructure</module>
+        <module>yunxin</module>
     </modules>
 
     <properties>
