@@ -60,16 +60,30 @@ public class SumNumbers {
         val += node.val;
         if (node.left == null && node.right == null) {
             sum += Integer.parseInt(val);
+            return;
         }
 
         if (node.left != null) {
             getSum(node.left, val);
-            val = val.substring(0, val.length() - 1);
         }
         if (node.right != null) {
             getSum(node.right, val);
-            val = val.substring(0, val.length() - 1);
         }
     }
 
+    public static void main(String[] args) {
+        TreeNode treeNode = new TreeNode(1,
+                new TreeNode(2,
+                        new TreeNode(3, null, null),
+                        new TreeNode(4,
+                                new TreeNode(5),
+                                null)
+                ),
+                new TreeNode(6, null, null));
+
+        SumNumbers sumNumbers = new SumNumbers();
+        System.out.println(sumNumbers.sumNumbers(treeNode));
+
+        System.out.println(123 + 1245 + 16);
+    }
 }
