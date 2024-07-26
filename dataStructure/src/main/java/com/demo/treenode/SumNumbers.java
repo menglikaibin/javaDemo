@@ -44,10 +44,10 @@ public class SumNumbers {
 
     public int sumNumbers(TreeNode root) {
         if (root.left != null) {
-            getSum(root.left, String.valueOf(root.val));
+            getSum(root.left, root.val);
         }
         if (root.right != null) {
-            getSum(root.right, String.valueOf(root.val));
+            getSum(root.right, root.val);
         }
         if (root.left == null && root.right == null) {
             return root.val;
@@ -56,10 +56,10 @@ public class SumNumbers {
         return sum;
     }
 
-    private void getSum(TreeNode node, String val) {
-        val += node.val;
+    private void getSum(TreeNode node, int val) {
+        val = val*10 + node.val;
         if (node.left == null && node.right == null) {
-            sum += Integer.parseInt(val);
+            sum += val;
             return;
         }
 
