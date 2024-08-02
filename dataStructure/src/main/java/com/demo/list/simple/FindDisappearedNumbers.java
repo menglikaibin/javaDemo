@@ -1,7 +1,6 @@
 package com.demo.list.simple;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 445,找到所有数组消失的数字
@@ -34,14 +33,23 @@ public class FindDisappearedNumbers {
             data.add(i);
         }
 
-        List<Integer> result = new ArrayList<>();
+        Set<Integer> set = new HashSet<>();
         for (int num : nums) {
-            if (!data.contains(num)) {
-                result.add(num);
+            if (data.contains(num)) {
+                set.add(num);
             }
         }
 
-        return result;
+        for (Integer value : set) {
+            data.remove(value);
+        }
+
+        return data;
+    }
+
+    public static void main(String[] args) {
+        FindDisappearedNumbers findDisappearedNumbers = new FindDisappearedNumbers();
+        System.out.println(findDisappearedNumbers.findDisappearedNumbers(new int[]{4, 3, 2, 7, 8, 2, 3, 1}));
     }
 
 }
