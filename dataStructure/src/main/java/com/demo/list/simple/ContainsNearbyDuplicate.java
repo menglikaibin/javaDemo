@@ -38,7 +38,7 @@ public class ContainsNearbyDuplicate {
         for (int i = 0; i < nums.length; i++) {
             int num = nums[i];
 
-            if (map.containsKey(num) && (i - map.get(num)) < k) {
+            if (map.containsKey(num) && (i - map.get(num)) <= k) {
                 return true;
             }
 
@@ -46,6 +46,11 @@ public class ContainsNearbyDuplicate {
         }
 
         return false;
+    }
+
+    public static void main(String[] args) {
+        ContainsNearbyDuplicate containsNearbyDuplicate = new ContainsNearbyDuplicate();
+        System.out.println(containsNearbyDuplicate.containsNearbyDuplicate(new int[]{1, 2, 3, 1, 2, 3}, 2));
     }
 
 }
