@@ -1,6 +1,7 @@
 package com.demo.backtracking;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -39,25 +40,24 @@ public class FindSubsequences {
     }
 
     private void backtracking(List<List<Integer>> result, List<Integer> data, int[] nums, int index) {
-        if (index >= nums.length) {
-            return;
-        }
-        if (data.size() >= 1 && nums[index] >= data.get(data.size() - 1)) {
-            data.add(nums[index]);
+
+        if (data.size() > 1) {
             result.add(new ArrayList<>(data));
-            return;
         }
 
+        HashSet<Integer> set = new HashSet<>();
         for (int i = index; i < nums.length; i++) {
-            data.add(nums[index]);
 
-            index++;
-            backtracking(result, data, nums, index);
-            index--;
+            // 录本层元素是否重复使⽤，新的⼀层set都会重新定义（清空）
+            if ((!data.isEmpty() && nums[i] < data.get(data.size() - 1)) || !set.add(nums[i])) {
+                continue;
+            }
 
+            data.add(nums[i]);
+            backtracking(result, data, nums, i+1);
             data.remove(data.size() - 1);
-
         }
+
     }
 
     public static void main(String[] args) {
