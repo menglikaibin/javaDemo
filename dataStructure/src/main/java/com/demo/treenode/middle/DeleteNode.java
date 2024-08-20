@@ -55,31 +55,31 @@ public class DeleteNode {
         }
 
         if (key < root.val) {
-            deleteNode(root.left, key);
+            root.left = deleteNode(root.left, key);
         }
 
-        if (key > root.val) {
-            deleteNode(root.right, key);
-        }
-
-        if (root.left == null && root.right == null) {
-            root = null;
-
-        } else if (root.left != null && root.right == null) {
-            root = root.left;
-        } else if (root.left == null && root.right != null) {
-            root = root.right;
+        else if (key > root.val) {
+            root.right = deleteNode(root.right, key);
         } else {
-            // 左右子树都不为null，查找右子树最小的节点
-            TreeNode rightMinNode = root.right;
-            while (rightMinNode.left != null) {
-                rightMinNode = rightMinNode.left;
+            if (root.left == null && root.right == null) {
+                root = null;
+
+            } else if (root.left != null && root.right == null) {
+                root = root.left;
+            } else if (root.left == null && root.right != null) {
+                root = root.right;
+            } else {
+                // 左右子树都不为null，查找右子树最小的节点
+                TreeNode rightMinNode = root.right;
+                while (rightMinNode.left != null) {
+                    rightMinNode = rightMinNode.left;
+                }
+
+                root.val = rightMinNode.val;
+
+                root.right = deleteNode(root.right, rightMinNode.val);
+
             }
-
-            root.val = rightMinNode.val;
-
-            root.right = deleteNode(root.right, rightMinNode.val);
-
         }
 
         return root;
