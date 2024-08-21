@@ -43,4 +43,31 @@ public class SearchMatrix {
         return false;
     }
 
+    public boolean searchMatrix2(int[][] matrix, int target) {
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+
+        int row = rows - 1;
+        int column = 0;
+
+        while (row >= 0 && column < columns) {
+            if (matrix[row][column] == target) {
+                return true;
+            } else if (matrix[row][column] < target) {
+                column ++;
+            } else {
+                row --;
+            }
+        }
+
+        return false;
+    }
+
+    public static void main(String[] args) {
+        SearchMatrix searchMatrix = new SearchMatrix();
+
+        int[][] ints = {{5, 6, 10, 14}, {6, 10, 13, 18}, {10, 13, 18, 19}};
+        System.out.println(searchMatrix.searchMatrix(ints, 14));
+    }
+
 }
