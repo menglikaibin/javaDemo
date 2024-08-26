@@ -61,4 +61,25 @@ public class IsAnagram {
         return true;
     }
 
+    public boolean isAnagram2(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        int[] ints = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            ints[s.charAt(i) - 'a'] ++;
+            ints[t.charAt(i) - 'a'] --;
+        }
+
+        for (int anInt : ints) {
+            if (anInt != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
 }
