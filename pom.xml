@@ -35,6 +35,7 @@
         <module>javaCV</module>
         <module>dataStructure</module>
         <module>yunxin</module>
+        <module>redissonDemo</module>
     </modules>
 
     <properties>
