@@ -36,6 +36,7 @@
         <module>dataStructure</module>
         <module>yunxin</module>
         <module>redissonDemo</module>
+        <module>concurrentDemo</module>
     </modules>
 
     <properties>

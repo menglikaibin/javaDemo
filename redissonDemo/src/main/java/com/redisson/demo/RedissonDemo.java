@@ -1,8 +1,14 @@
 package com.redisson.demo;
 
 import org.redisson.api.RBloomFilter;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
+
+import java.util.concurrent.TimeUnit;
 
 public class RedissonDemo {
+
+    private RedissonClient redissonClient;
 
     public static void main(String[] args) {
 
@@ -28,6 +34,20 @@ public class RedissonDemo {
         }
 
         System.out.println("初始化完成");
+    }
+
+    public void redisLock() throws InterruptedException {
+        RLock demoLock = redissonClient.getLock("demoLock");
+
+        boolean isLock = demoLock.tryLock(10, TimeUnit.SECONDS);
+
+        if (isLock) {
+            try {
+                System.out.println("执行业务");
+            } finally {
+                demoLock.unlock();
+            }
+        }
     }
 
 }
