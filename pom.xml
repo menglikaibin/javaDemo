@@ -37,6 +37,7 @@
         <module>yunxin</module>
         <module>redissonDemo</module>
         <module>concurrentDemo</module>
+        <module>jdbcDemo</module>
     </modules>
 
     <properties>
