@@ -1,4 +1,4 @@
-package com.demo.quickSort;
+package com.demo.sort.quickSort;
 
 import java.util.Arrays;
 
@@ -34,30 +34,29 @@ public class SortColors {
         quickSort(nums, 0, nums.length - 1);
     }
 
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
-    }
-
     /**
      * 1.选取数组最左端元素作为基准数，初始化两个指针 i 和 j 分别指向数组的两端。
      * 2.设置一个循环，在每轮中使用 i（j）分别寻找第一个比基准数大（小）的元素，然后交换这两个元素。
      * 3.循环执行步骤 2. ，直到 i 和 j 相遇时停止，最后将基准数交换至两个子数组的分界线。
      */
     private int partition(int[] nums, int left, int right) {
-        int i = left, j = right;
-        while (i < j) {
-            while (i < j && nums[j] >= nums[left]) {
-                j --;
+        int pivot = nums[left];
+
+        while (left < right) {
+            while (left < right && nums[right] >= pivot) {
+                right--;
             }
-            while (i < j && nums[i] <= nums[left]) {
-                i ++;
+            nums[left] = nums[right];
+
+            while (left < right && nums[left] <= pivot) {
+                left ++;
             }
-            swap(nums, i, j);
+            nums[right] = nums[left];
         }
-        swap(nums, i, left);
-        return i;
+
+        nums[right] = pivot;
+
+        return right;
     }
 
     private void quickSort(int[] nums, int left, int right) {
